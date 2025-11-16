@@ -141,7 +141,7 @@ allow_origin_regex = None
 
 # Add staging-specific origins
 if config.ENV_MODE == EnvMode.LOCAL:
-    allowed_origins.append("http://localhost:3000")
+    allowed_origins.append(config.NEXT_PUBLIC_URL)
     allowed_origins.append("http://127.0.0.1:3000")
 
 # Add staging-specific origins

@@ -52,9 +52,10 @@ class BrowserAutomation {
                     logger: (logLine: LogLine) => {
                         console.log(`[${logLine.category}] ${logLine.message}`);
                     },
-                    modelName: "google/gemini-2.5-pro",
+                    modelName: "openai/qwen3-max",
                     modelClientOptions: {
-                        apiKey
+                        apiKey,
+                        baseURL: "https://dashscope.aliyuncs.com/compatible-mode/v1"
                     },
                     localBrowserLaunchOptions: {
                         headless: false,

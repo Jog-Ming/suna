@@ -167,10 +167,10 @@ class BrowserTool(SandboxToolsBase):
                             # If the browser api is not healthy, we need to initialize it
                             logger.info("Stagehand API server responded but browser not initialized. Initializing...")
                             # Pass API key securely as environment variable instead of command line argument
-                            env_vars = {"GEMINI_API_KEY": config.GEMINI_API_KEY}
+                            env_vars = {"OPENAI_API_KEY": config.OPENAI_API_KEY}
 
                             response = await self.sandbox.process.exec(
-                                'curl -s -X POST "http://localhost:8004/api/init" -H "Content-Type: application/json" -d "{\\"api_key\\": \\"$GEMINI_API_KEY\\"}"',
+                                'curl -s -X POST "http://localhost:8004/api/init" -H "Content-Type: application/json" -d "{\\"api_key\\": \\"$OPENAI_API_KEY\\"}"',
                                 timeout=90,
                                 env=env_vars
                             )
@@ -210,9 +210,9 @@ class BrowserTool(SandboxToolsBase):
     async def _execute_stagehand_api(self, endpoint: str, params: dict = None, method: str = "POST") -> ToolResult:
         """Execute a Stagehand action through the sandbox API"""
         try:
-            # Check if Gemini API key is configured
-            if not config.GEMINI_API_KEY:
-                return self.fail_response("Browser tool is not available. GEMINI_API_KEY is not configured.")
+            # Check if OpenAI API key is configured
+            if not config.OPENAI_API_KEY:
+                return self.fail_response("Browser tool is not available. OPENAI_API_KEY is not configured.")
             
             # Ensure sandbox is initialized
             await self._ensure_sandbox()

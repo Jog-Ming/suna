@@ -387,6 +387,9 @@ class Configuration:
     TRIGGER_WEBHOOK_SECRET: Optional[str] = None
     
     # Email configuration
+
+    # Frontend configuration
+    NEXT_PUBLIC_URL: Optional[str] = "http://localhost:3000"
     
     # Agent execution limits (can be overridden via environment variable)
     _MAX_PARALLEL_AGENT_RUNS_ENV: Optional[str] = None

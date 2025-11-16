@@ -274,25 +274,25 @@ class ModelRegistry:
         #     enabled=False  # Currently disabled
         # ))
         
-        # # Qwen Models
-        # self.register(Model(
-        #     id="openrouter/qwen/qwen3-235b-a22b",
-        #     name="Qwen3 235B",
-        #     provider=ModelProvider.OPENROUTER,
-        #     aliases=["qwen3", "qwen-3"],
-        #     context_window=128_000,
-        #     capabilities=[
-        #         ModelCapability.CHAT, 
-        #         ModelCapability.FUNCTION_CALLING
-        #     ],
-        #     pricing=ModelPricing(
-        #         input_cost_per_million_tokens=0.13,
-        #         output_cost_per_million_tokens=0.60
-        #     ),
-        #     tier_availability=["free", "paid"],
-        #     priority=90,
-        #     enabled=False  # Currently disabled
-        # ))
+        # Qwen Models
+        self.register(Model(
+            id="openai/qwen3-max",
+            name="Qwen3 Max",
+            provider=ModelProvider.OPENROUTER,
+            aliases=["qwen3", "qwen-3"],
+            context_window=200_000,
+            capabilities=[
+                ModelCapability.CHAT,
+                ModelCapability.FUNCTION_CALLING
+            ],
+            pricing=ModelPricing(
+                input_cost_per_million_tokens=0.13,
+                output_cost_per_million_tokens=0.60
+            ),
+            tier_availability=["free", "paid"],
+            priority=90,
+            enabled=True
+        ))
         
     
     def register(self, model: Model) -> None:
